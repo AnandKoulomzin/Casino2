@@ -19,15 +19,21 @@ public class Casino {
         shuffle();
         System.out.println("\nAfter shuffling:");
         printDeck();
+        deal();
         players = new Player[2];
     }
 
-    public void deal () {
+    public void deal() {
         shuffle();
-        deck.get(0);
-        deck.remove(0);
-        deck.get(0);
-        deck.remove(0);
+        Player player = new Player();
+        player.hand = new ArrayList<>();
+
+        for (int i = 0; i < 2; i++) {
+            Card card = deck.get(0);
+            player.hand.add(card);
+            deck.remove(0);
+        }
+        System.out.println(player.hand);
     }
 
     public void printDeck() {
